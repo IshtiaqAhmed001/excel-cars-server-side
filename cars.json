@@ -1,0 +1,68 @@
+[
+    {
+        "img": "https://i.ibb.co/6PWNvQp/1.jpg",
+        "name": "Audi TT RS",
+        "price": "$50,000",
+        "madeIn": "USA",
+        "milage": "10,555 km",
+        "fuel": "Diesel",
+        "mode": "Automatic",
+        "seats": "5 seats",
+        "released": "2010"
+    },
+    {
+        "img": "https://i.ibb.co/VNn6DqR/2.jpg",
+        "name": "Mazda CX-5 SX, V6, ABS, Sunroof",
+        "price": "$91,000",
+        "madeIn": "Germany",
+        "milage": "2,500 km",
+        "fuel": "Petrol",
+        "mode": "Manual",
+        "seats": "5 seats",
+        "released": "2017"
+    },
+    {
+        "img": "https://i.ibb.co/GMLxDWf/3.jpg",
+        "name": "BMW 535 v6",
+        "price": "$40,000",
+        "madeIn": "Russia",
+        "milage": "20,000 km",
+        "fuel": "Autogas",
+        "mode": "Automatic",
+        "seats": "2 seats",
+        "released": "2010"
+    },
+    {
+        "img": "https://i.ibb.co/8sXVM9V/6.jpg",
+        "name": "Range Rover",
+        "price": "$43,000",
+        "madeIn": "Russia",
+        "milage": "15,000 km",
+        "fuel": "Petrol",
+        "mode": "Automatic",
+        "seats": "5 seats",
+        "released": "2016"
+    },
+    {
+        "img": "https://i.ibb.co/R0kSc3g/4.jpg",
+        "name": "BMW 535i",
+        "price": "$10,000",
+        "madeIn": "Mexico",
+        "milage": "20,000 km",
+        "fuel": "Petrol",
+        "mode": "Manual",
+        "seats": "2 seats",
+        "released": "2017"
+    },
+    {
+        "img": "https://i.ibb.co/Wx5KPzj/5.jpg",
+        "name": "Maserati QUATTROPORTE",
+        "price": "$90,000",
+        "madeIn": "Spain",
+        "milage": "35,000 km",
+        "fuel": "Diesel",
+        "mode": "Automatic",
+        "seats": "4 seats",
+        "released": "2010"
+    }
+]
