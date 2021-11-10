@@ -23,12 +23,20 @@ async function run() {
 
         const database = client.db("excel_cars");
         const carsCollection = database.collection("cars");
+        const reviewsCollection = database.collection('reviews');
 
         // GET CARS 
         app.get('/cars', async (req, res) => {
             const cursor = carsCollection.find({});
             const cars = await cursor.toArray();
             res.send(cars);
+
+            // GET REVIEWS 
+            app.get('/reviews', async (req, res) => {
+                const cursor = reviewsCollection.find({});
+                const reviews = await cursor.toArray();
+                res.send(reviews);
+            })
         })
     }
     finally {
