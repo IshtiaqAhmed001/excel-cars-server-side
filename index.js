@@ -32,6 +32,12 @@ async function run() {
             const cars = await cursor.toArray();
             res.send(cars);
         });
+        // GET CARS 
+        app.get('/orders', async (req, res) => {
+            const cursor = ordersCollection.find({});
+            const cars = await cursor.toArray();
+            res.send(cars);
+        });
         // GET REVIEWS 
         app.get('/reviews', async (req, res) => {
             const cursor = reviewsCollection.find({});
@@ -54,6 +60,22 @@ async function run() {
             const myOrders = await cursor.toArray();
             res.json(myOrders);
         });
+        //Update Order status
+        app.put('/orders/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log(id)
+            const updatedOrder = req.body;
+            const filter = { _id: ObjectId(id) };
+
+            const updateDoc = {
+                $set: {
+                    status: updatedOrder.status
+                },
+            };
+            const result = await ordersCollection.updateOne(filter, updateDoc);
+            console.log(result)
+            res.json(result);
+        })
         // Cancel Order
         app.delete('/myorders/:id', async (req, res) => {
             const id = req.params.id;
