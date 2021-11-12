@@ -58,6 +58,12 @@ async function run() {
             const result = await carsCollection.insertOne(newCar);
             res.send(result);
         });
+        // ADD NEW Review 
+        app.post('/reviews', async (req, res) => {
+            const newReview = req.body;
+            const result = await reviewsCollection.insertOne(newReview);
+            res.send(result);
+        });
 
         // GET My Orders 
         app.get('/myorders', async (req, res) => {
