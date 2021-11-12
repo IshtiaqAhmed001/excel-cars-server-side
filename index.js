@@ -83,6 +83,13 @@ async function run() {
             const result = await ordersCollection.deleteOne(query);
             res.json(result);
         })
+        // Delete Product
+        app.delete('/cars/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await carsCollection.deleteOne(query);
+            res.json(result);
+        });
 
     }
     finally {
