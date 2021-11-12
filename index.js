@@ -32,7 +32,7 @@ async function run() {
             const cars = await cursor.toArray();
             res.send(cars);
         });
-        // GET CARS 
+        // GET ORDERED CARS 
         app.get('/orders', async (req, res) => {
             const cursor = ordersCollection.find({});
             const cars = await cursor.toArray();
@@ -49,6 +49,13 @@ async function run() {
         app.post('/placeorder', async (req, res) => {
             const newOrder = req.body;
             const result = await ordersCollection.insertOne(newOrder);
+            res.send(result);
+        });
+
+        // ADD NEW CAR 
+        app.post('/cars', async (req, res) => {
+            const newCar = req.body;
+            const result = await carsCollection.insertOne(newCar);
             res.send(result);
         });
 
