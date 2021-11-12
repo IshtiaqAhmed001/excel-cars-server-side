@@ -23,6 +23,7 @@ async function run() {
 
         const database = client.db("excel_cars");
         const carsCollection = database.collection("cars");
+        const ordersCollection = database.collection("orders");
         const reviewsCollection = database.collection('reviews');
 
         // GET CARS 
@@ -30,14 +31,31 @@ async function run() {
             const cursor = carsCollection.find({});
             const cars = await cursor.toArray();
             res.send(cars);
+        });
+        // GET REVIEWS 
+        app.get('/reviews', async (req, res) => {
+            const cursor = reviewsCollection.find({});
+            const reviews = await cursor.toArray();
+            res.send(reviews);
+        });
 
-            // GET REVIEWS 
-            app.get('/reviews', async (req, res) => {
-                const cursor = reviewsCollection.find({});
-                const reviews = await cursor.toArray();
-                res.send(reviews);
-            })
+        //Save Orders
+        app.post('/placeorder', async (req, res) => {
+            const newOrder = req.body;
+            console.log(newOrder);
+            const result = await ordersCollection.insertOne(newOrder);
+            res.send(result);
+        });
+
+        // GET My Orders 
+        app.get('/myorders', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const cursor = ordersCollection.find(query);
+            const myOrders = await cursor.toArray();
+            res.json(myOrders);
         })
+
     }
     finally {
         // await client.close();
