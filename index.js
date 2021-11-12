@@ -42,7 +42,6 @@ async function run() {
         //Save Orders
         app.post('/placeorder', async (req, res) => {
             const newOrder = req.body;
-            console.log(newOrder);
             const result = await ordersCollection.insertOne(newOrder);
             res.send(result);
         });
@@ -54,6 +53,13 @@ async function run() {
             const cursor = ordersCollection.find(query);
             const myOrders = await cursor.toArray();
             res.json(myOrders);
+        });
+        // Cancel Order
+        app.delete('/myorders/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await ordersCollection.deleteOne(query);
+            res.json(result);
         })
 
     }
