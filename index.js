@@ -66,14 +66,14 @@ async function run() {
             const result = await carsCollection.insertOne(newCar);
             res.send(result);
         });
-        // ADD NEW Review 
+        // ADD NEW REVIEW 
         app.post('/reviews', async (req, res) => {
             const newReview = req.body;
             const result = await reviewsCollection.insertOne(newReview);
             res.send(result);
         });
 
-        // GET My Orders 
+        // GET MY ORDERS
         app.get('/myorders', async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
@@ -81,7 +81,7 @@ async function run() {
             const myOrders = await cursor.toArray();
             res.json(myOrders);
         });
-        //Update Order status
+        //UPDATE ORDER STATUS
         app.put('/orders/:id', async (req, res) => {
             const id = req.params.id;
             console.log(id)
@@ -96,7 +96,23 @@ async function run() {
             const result = await ordersCollection.updateOne(filter, updateDoc);
             console.log(result)
             res.json(result);
-        })
+        });
+        //MAKE USER ADMIN
+        app.put('/users/:email', async (req, res) => {
+            const email = req.params.email;
+            console.log(email)
+            const updatedUser = req.body;
+            const filter = { email: email };
+
+            const updateDoc = {
+                $set: {
+                    role: updatedUser.role
+                },
+            };
+            const result = await usersCollection.updateOne(filter, updateDoc);
+            console.log(result)
+            res.json(result);
+        });
         // Cancel Order
         app.delete('/myorders/:id', async (req, res) => {
             const id = req.params.id;
