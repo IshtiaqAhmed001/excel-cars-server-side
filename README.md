@@ -23,13 +23,14 @@ Login/Register      | Login and Registration pages
 
 ### Project Details
 
-To the frontend(client side) we used React,which is a JavaScript Library. We also implemented react router here so the pages of the site loads faster than the regular websites.We used firebase authentication system and private route too.For styling we used a combination of vanilla css and bootstrap.
+To make the frontend(client side) we used React,which is a JavaScript Library. We also implemented react router here so the pages of the site loads faster than the regular websites.We used firebase authentication system and private route too.For styling we used a combination of vanilla css and bootstrap.
 
 For backend (server side) used node and express as a framework.
 And lastly for storing data we used mongodb which is a nosql database.
 
 
 ### Live client site link:
-
+https://excel-cars-84a43.web.app
 
 ### Live server site link:
+https://floating-taiga-26098.herokuapp.com/
