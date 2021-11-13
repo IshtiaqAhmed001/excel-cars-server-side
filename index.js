@@ -25,6 +25,7 @@ async function run() {
         const carsCollection = database.collection("cars");
         const ordersCollection = database.collection("orders");
         const reviewsCollection = database.collection('reviews');
+        const usersCollection = database.collection('users');
 
         // GET CARS 
         app.get('/cars', async (req, res) => {
@@ -44,6 +45,13 @@ async function run() {
             const reviews = await cursor.toArray();
             res.send(reviews);
         });
+        // GET USERS 
+        app.get('/users', async (req, res) => {
+            const cursor = usersCollection.find({});
+            const users = await cursor.toArray();
+            res.send(users);
+        });
+
 
         //Save Orders
         app.post('/placeorder', async (req, res) => {
@@ -103,6 +111,24 @@ async function run() {
             const result = await carsCollection.deleteOne(query);
             res.json(result);
         });
+
+        // SAVE USER 
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.json(result);
+        });
+
+        // update/insert user 
+        app.put('/users', async (req, res) => {
+            const user = req.body;
+            console.log(user);
+            const filter = { email: user.email };
+            const options = { upsert: true };
+            const updateDoc = { $set: user };
+            const result = await usersCollection.updateOne(filter, updateDoc, options);
+            res.json(result);
+        })
 
     }
     finally {
